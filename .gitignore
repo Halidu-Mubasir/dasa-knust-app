@@ -5,11 +5,5 @@ backend/db.sqlite3
 backend/.venv
 *.pyc
 
-# Node / Next.js
-frontend/node_modules/
-frontend/.next/
-frontend/.env.local
-frontend/.env
-
 # claude code
 .claude
