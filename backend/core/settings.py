@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-v0l#v#-v+_@&vncc#@(=7+o$7r)857#@klzr^nk@@ws66nnq+u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok-free.app']
 
 
 # Application definition
@@ -97,6 +97,7 @@ DATABASES = {
     }
 }
 
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -145,6 +146,7 @@ AUTH_USER_MODEL = "dasa_users.User"
 # CORS Settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://dasa-knust-app.vercel.app",
 ]
 
 # Media files (User uploads: profile pictures, candidate photos)
