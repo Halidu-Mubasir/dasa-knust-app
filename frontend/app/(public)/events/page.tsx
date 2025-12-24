@@ -95,9 +95,16 @@ export default function EventsPage() {
                 const eventsList = Array.isArray(eventData) ? eventData : (eventData.results || []);
                 setEvents(eventsList);
                 setError(null);
-            } catch (err: any) {
+            } catch (err) {
                 console.error('Error fetching events:', err);
-                const errorMessage = err.response?.data?.detail || 'Failed to load events';
+                // Avoid use of 'any'; provide a more specific check
+                let errorMessage = 'Failed to load events';
+                if (err && typeof err === 'object' && 'response' in err && err.response && typeof err.response === 'object') {
+                    const response = err.response as { data?: { detail?: string } };
+                    if (response.data && typeof response.data.detail === 'string') {
+                        errorMessage = response.data.detail;
+                    }
+                }
                 setError(errorMessage);
                 toast.error(errorMessage);
             } finally {
