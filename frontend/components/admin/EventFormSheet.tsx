@@ -38,8 +38,8 @@ const eventSchema = z.object({
     date: z.string().min(1, "Date is required"),
     start_time: z.string().min(1, "Start time is required"),
     end_time: z.string().min(1, "End time is required"),
-    is_featured: z.boolean().default(false),
-    registration_required: z.boolean().default(false),
+    is_featured: z.boolean(),
+    registration_required: z.boolean(),
     registration_link: z.string().url("Must be a valid URL").optional().or(z.literal("")),
     external_registration_link: z.string().url("Must be a valid URL").optional().or(z.literal("")),
 })

@@ -42,7 +42,7 @@ const announcementSchema = z.object({
     message: z.string().min(5, "Message must be at least 5 characters"),
     priority: z.enum(['Normal', 'High']),
     related_link: z.string().url("Must be a valid URL").optional().or(z.literal("")),
-    is_active: z.boolean().default(true),
+    is_active: z.boolean(),
 })
 
 type AnnouncementFormValues = z.infer<typeof announcementSchema>

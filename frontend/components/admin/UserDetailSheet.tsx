@@ -111,7 +111,7 @@ export function UserDetailSheet({ user, open, onOpenChange, onUserUpdate }: User
                     {/* Profile Header */}
                     <div className="flex items-center gap-4">
                         <Avatar className="h-20 w-20">
-                            <AvatarImage src={user.profile?.profile_picture} />
+                            <AvatarImage src={user.profile?.profile_picture || undefined} />
                             <AvatarFallback className="text-lg">
                                 {user.username.substring(0, 2).toUpperCase()}
                             </AvatarFallback>

@@ -217,7 +217,7 @@ export default function LostFoundDetailPage() {
                             </h1>
                             <div className="flex items-center gap-2 text-muted-foreground text-sm">
                                 <Calendar className="w-4 h-4" />
-                                <span>Posted on {new Date(item.created_at).toLocaleDateString(undefined, { dateStyle: 'long' })}</span>
+                                <span>Posted on {item.created_at ? new Date(item.created_at).toLocaleDateString(undefined, { dateStyle: 'long' }) : 'Unknown'}</span>
                             </div>
                         </div>
 

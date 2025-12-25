@@ -32,7 +32,7 @@ const CATEGORIES = [
 function WelfareContent() {
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState<WelfareReport>({
+    const [formData, setFormData] = useState<Omit<WelfareReport, 'id'>>({
         category: 'Other',
         description: '',
         location: '',
@@ -52,7 +52,7 @@ function WelfareContent() {
             setLoading(true);
 
             // Prepare data - remove contact_info if anonymous
-            const submitData: WelfareReport = {
+            const submitData: Omit<WelfareReport, 'id'> = {
                 ...formData,
                 contact_info: formData.is_anonymous ? undefined : formData.contact_info,
             };
