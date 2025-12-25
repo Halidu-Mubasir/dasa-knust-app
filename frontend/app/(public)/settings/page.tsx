@@ -260,7 +260,7 @@ function SettingsProfileContent() {
                     {/* Profile Picture Section */}
                     <div className="flex items-center space-x-4">
                         <Avatar className="h-24 w-24">
-                            <AvatarImage src={previewUrl} alt={user?.username || 'Profile'} />
+                            <AvatarImage src={previewUrl || undefined} alt={user?.username || 'Profile'} />
                             <AvatarFallback className="text-2xl">
                                 {user?.username?.charAt(0).toUpperCase()}
                             </AvatarFallback>

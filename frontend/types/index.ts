@@ -11,6 +11,9 @@ export interface User {
   is_alumni: boolean;
   is_staff?: boolean;
   is_superuser?: boolean;
+  is_active?: boolean;
+  date_joined?: string;
+  last_login?: string;
   profile?: Profile;
 }
 
@@ -245,7 +248,7 @@ export interface Chapter {
 
 // Welfare types
 export interface WelfareReport {
-  id?: number;
+  id: number;
   category: 'Harassment' | 'Academic' | 'Accommodation' | 'Financial' | 'Other';
   description: string;
   location?: string;

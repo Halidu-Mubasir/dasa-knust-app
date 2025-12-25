@@ -90,7 +90,7 @@ export default function WelfarePage() {
         if (selectedIds.length === data.length) {
             setSelectedIds([])
         } else {
-            setSelectedIds(data.map(item => item.id))
+            setSelectedIds(data.map(item => item.id).filter((id): id is number => id !== undefined))
         }
     }
 

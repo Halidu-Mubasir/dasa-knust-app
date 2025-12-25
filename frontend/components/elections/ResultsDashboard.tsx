@@ -191,7 +191,7 @@ export function ResultsDashboard({ election, candidates, positions = [], onPubli
                                             cx="50%"
                                             cy="50%"
                                             labelLine={false}
-                                            label={(entry) => `${entry.name}: ${entry.votes}`}
+                                            label={(entry: any) => `${entry.name}: ${entry.votes}`}
                                             outerRadius={100}
                                             fill="#8884d8"
                                             dataKey="votes"

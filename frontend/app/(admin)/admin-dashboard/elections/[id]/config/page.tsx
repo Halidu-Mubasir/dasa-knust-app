@@ -551,7 +551,7 @@ export default function ElectionConfigPage() {
                                                             className="flex items-center gap-3 p-2 rounded-md border"
                                                         >
                                                             <Avatar className="h-10 w-10">
-                                                                <AvatarImage src={candidate.photo || candidate.user_details?.profile?.profile_picture} />
+                                                                <AvatarImage src={candidate.photo || candidate.user_details?.profile?.profile_picture || undefined} />
                                                                 <AvatarFallback>
                                                                     {candidate.user_details?.first_name?.[0]}
                                                                     {candidate.user_details?.last_name?.[0]}
@@ -715,7 +715,7 @@ export default function ElectionConfigPage() {
                                                     />
                                                     <div className="flex items-center gap-3">
                                                         <Avatar className="h-8 w-8">
-                                                            <AvatarImage src={user.profile?.profile_picture} />
+                                                            <AvatarImage src={user.profile?.profile_picture || undefined} />
                                                             <AvatarFallback>
                                                                 {user.first_name?.[0]}{user.last_name?.[0]}
                                                             </AvatarFallback>

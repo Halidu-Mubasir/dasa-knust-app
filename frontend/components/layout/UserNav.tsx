@@ -50,7 +50,7 @@ export function UserNav() {
     ];
 
     // Get profile picture URL
-    const profilePicture = user.profile?.profile_picture || '';
+    const profilePicture = user.profile?.profile_picture || undefined;
 
     return (
         <DropdownMenu>

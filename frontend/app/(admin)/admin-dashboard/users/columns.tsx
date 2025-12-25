@@ -76,7 +76,7 @@ export const createColumns = (onViewDetails: (user: User) => void): ColumnDef<Us
             return (
                 <div className="flex items-center gap-2">
                     <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.profile?.profile_picture} />
+                        <AvatarImage src={user.profile?.profile_picture || undefined} />
                         <AvatarFallback>{user.username.substring(0, 2).toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col">
