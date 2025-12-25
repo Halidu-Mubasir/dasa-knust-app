@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Candidate } from '@/types';
 import { Check, FileText, User } from 'lucide-react';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 interface CandidateCardProps {
     candidate: Candidate;
@@ -13,6 +14,8 @@ interface CandidateCardProps {
 }
 
 export function CandidateCard({ candidate, isSelected, onSelect }: CandidateCardProps) {
+    const candidatePhotoUrl = getProxiedImageUrl(candidate.photo);
+
     return (
         <div
             onClick={onSelect}
@@ -31,18 +34,18 @@ export function CandidateCard({ candidate, isSelected, onSelect }: CandidateCard
             )}
 
             <AspectRatio ratio={4 / 3} className="bg-muted relative">
-                {candidate.photo ? (
+                {candidatePhotoUrl ? (
                     <div className="relative h-full w-full overflow-hidden bg-muted">
                         {/* Layer 1: Background Ambience */}
                         <img
-                            src={candidate.photo}
+                            src={candidatePhotoUrl}
                             alt={`${candidate.user_details?.first_name || ''} ${candidate.user_details?.last_name || ''}`}
                             className="absolute inset-0 h-full w-full object-cover blur-xl scale-110 opacity-60 brightness-75"
                         />
 
                         {/* Layer 2: Sharp Subject */}
                         <img
-                            src={candidate.photo}
+                            src={candidatePhotoUrl}
                             alt={`${candidate.user_details?.first_name || ''} ${candidate.user_details?.last_name || ''}`}
                             className="absolute inset-0 h-full w-full object-contain z-10 drop-shadow-md transition-transform duration-500 group-hover:scale-105"
                         />

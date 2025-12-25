@@ -9,6 +9,7 @@ import { CalendarPlus, MapPin, Clock, Loader2 } from 'lucide-react';
 import api from '@/lib/axios';
 import { Event } from '@/types';
 import { toast } from 'sonner';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 function EventCard({ event }: { event: Event }) {
     const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -18,12 +19,14 @@ function EventCard({ event }: { event: Event }) {
     const month = monthNames[eventDate.getMonth()];
     const day = eventDate.getDate();
 
+    const eventImageUrl = getProxiedImageUrl(event.event_image_url);
+
     return (
         <Card className="hover:shadow-md transition-shadow overflow-hidden group">
-            {event.event_image_url && (
+            {eventImageUrl && (
                 <div className="relative w-full h-48 bg-muted">
                     <img
-                        src={event.event_image_url}
+                        src={eventImageUrl}
                         alt={event.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />

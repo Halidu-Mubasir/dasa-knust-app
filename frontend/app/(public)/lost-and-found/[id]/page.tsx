@@ -21,6 +21,7 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 import {
     MessageCircle,
     User,
@@ -143,13 +144,13 @@ export default function LostFoundDetailPage() {
                                         <div className="w-full h-full cursor-zoom-in relative">
                                             {/* Layer 1: Background Ambience */}
                                             <img
-                                                src={item.image_url}
+                                                src={getProxiedImageUrl(item.image_url) || ''}
                                                 alt={item.category_display}
                                                 className="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-60 brightness-75"
                                             />
                                             {/* Layer 2: Main Image */}
                                             <img
-                                                src={item.image_url}
+                                                src={getProxiedImageUrl(item.image_url) || ''}
                                                 alt={item.category_display}
                                                 className="absolute inset-0 w-full h-full object-scale-down z-10 drop-shadow-md transition-transform duration-500 group-hover:scale-105"
                                             />
@@ -163,7 +164,7 @@ export default function LostFoundDetailPage() {
                                     <DialogContent className="max-w-4xl w-full p-0 overflow-hidden bg-transparent border-none shadow-none">
                                         <div className="relative w-full aspect-square md:aspect-video bg-black/90 rounded-lg overflow-hidden flex items-center justify-center">
                                             <img
-                                                src={item.image_url}
+                                                src={getProxiedImageUrl(item.image_url) || ''}
                                                 alt={item.category_display}
                                                 className="w-full h-full object-contain"
                                             />
