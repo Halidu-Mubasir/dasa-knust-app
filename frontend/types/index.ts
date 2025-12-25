@@ -28,6 +28,7 @@ export interface Profile {
   year_group: number;
   hometown: string;
   profile_picture: string | null;
+  profile_picture_url?: string | null; // Absolute URL from serializer
 }
 
 export interface Election {

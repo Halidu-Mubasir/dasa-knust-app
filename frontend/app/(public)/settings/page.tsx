@@ -7,6 +7,7 @@ import * as z from 'zod';
 import { useAuthStore } from '@/store/useAuthStore';
 import api from '@/lib/axios';
 import { toast } from 'sonner';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 import { AuthGuard } from '@/components/layout/AuthGuard';
 import { Button } from '@/components/ui/button';
 import {
@@ -103,8 +104,9 @@ function SettingsProfileContent() {
                 });
 
                 // Set preview URL if profile picture exists
-                if (data.profile?.profile_picture) {
-                    setPreviewUrl(data.profile.profile_picture);
+                if (data.profile?.profile_picture_url || data.profile?.profile_picture) {
+                    const pictureUrl = data.profile.profile_picture_url || data.profile.profile_picture;
+                    setPreviewUrl(getProxiedImageUrl(pictureUrl) || '');
                 }
 
                 // Update user in store

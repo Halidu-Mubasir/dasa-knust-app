@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Facebook, Linkedin, Twitter } from 'lucide-react';
 import { Executive } from '@/types';
 import { cn } from '@/lib/utils';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 interface ExecutiveCardProps {
     executive: Executive;
@@ -26,7 +27,8 @@ const getInitials = (name: string): string => {
 
 export function ExecutiveCard({ executive }: ExecutiveCardProps) {
     // Robust image handling
-    const imageUrl = executive.image_url || executive.profile_picture || null;
+    const rawImageUrl = executive.image_url || executive.profile_picture || null;
+    const imageUrl = getProxiedImageUrl(rawImageUrl);
     const hasImage = !!imageUrl;
 
     return (
