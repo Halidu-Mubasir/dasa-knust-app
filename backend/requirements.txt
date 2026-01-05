@@ -1,0 +1,24 @@
+# Django Core
+Django==4.2
+djangorestframework==3.16.0
+djangorestframework-simplejwt==5.4.0
+
+# CORS Headers for API
+django-cors-headers==4.6.0
+
+# Image handling
+Pillow==11.1.0
+
+# Database (SQLite is included with Python, but add this for PostgreSQL support if needed)
+# psycopg2-binary==2.9.9  # Uncomment if using PostgreSQL
+
+# API Documentation
+drf-yasg==1.21.10
+
+# Utilities
+python-dotenv==1.0.1
+pytz==2025.2
+
+# Optional: For production deployment
+# gunicorn==21.2.0  # Uncomment for production WSGI server
+# whitenoise==6.6.0  # Uncomment for serving static files in production
