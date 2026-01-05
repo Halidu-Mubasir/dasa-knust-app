@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import api from '@/lib/axios';
 import { GalleryItem } from '@/types';
 import { toast } from 'sonner';
+import { getProxiedImageUrl, getProxiedVideoUrl } from '@/lib/imageProxy';
 
 const CATEGORIES = ['All', 'General', 'Sports', 'Cultural', 'Politics', 'Excursion'];
 
@@ -66,14 +67,14 @@ export default function GalleryPage() {
                     height: 1080,
                     sources: [
                         {
-                            src: item.video_url!,
+                            src: getProxiedVideoUrl(item.video_url!) || '',
                             type: 'video/mp4',
                         },
                     ],
                 };
             }
             return {
-                src: item.image_url!,
+                src: getProxiedImageUrl(item.image_url!) || '',
             };
         });
 
@@ -123,7 +124,7 @@ export default function GalleryPage() {
                 {/* Masonry Grid Gallery */}
                 <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
                     {filteredItems.map((item, index) => {
-                        const thumbnailUrl = item.thumbnail_url;
+                        const thumbnailUrl = getProxiedImageUrl(item.thumbnail_url);
                         if (!thumbnailUrl) return null;
 
                         return (

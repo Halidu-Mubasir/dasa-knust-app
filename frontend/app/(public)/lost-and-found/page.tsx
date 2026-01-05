@@ -19,6 +19,7 @@ import { Search, Plus, Phone, AlertTriangle, CheckCircle2, User, Pencil, Trash2 
 import { toast } from 'sonner';
 import { useAuthStore } from '@/store/useAuthStore';
 import { format } from 'date-fns';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 const formatDate = (dateString: string) => {
     if (!dateString) return 'N/A';
@@ -425,7 +426,7 @@ export default function LostAndFoundPage() {
                                         {item.image_url && (
                                             <div className="relative aspect-video bg-muted group-hover:brightness-[0.95] transition-all">
                                                 <img
-                                                    src={item.image_url}
+                                                    src={getProxiedImageUrl(item.image_url) || ''}
                                                     alt={item.category_display || ''}
                                                     className="absolute inset-0 w-full h-full object-cover"
                                                 />

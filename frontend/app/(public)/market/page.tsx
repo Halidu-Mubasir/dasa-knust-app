@@ -18,6 +18,7 @@ import { ShoppingBag, Plus, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuthStore } from '@/store/useAuthStore';
 import { cn } from '@/lib/utils';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 const CATEGORIES = [
     { value: 'all', label: 'All Items' },
@@ -340,7 +341,7 @@ export default function MarketPage() {
                                     <div className="relative aspect-square">
                                         {product.image_url ? (
                                             <img
-                                                src={product.image_url}
+                                                src={getProxiedImageUrl(product.image_url) || ''}
                                                 alt={product.title}
                                                 className={cn(
                                                     "w-full h-full object-cover transition-all",

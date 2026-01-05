@@ -18,6 +18,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Check, Moon, Sun, Monitor, CreditCard, LifeBuoy, ShieldCheck } from 'lucide-react';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 
 export function UserNav() {
     const router = useRouter();
@@ -50,7 +51,7 @@ export function UserNav() {
     ];
 
     // Get profile picture URL
-    const profilePicture = user.profile?.profile_picture || undefined;
+    const profilePicture = getProxiedImageUrl(user.profile?.profile_picture_url || user.profile?.profile_picture) || undefined;
 
     return (
         <DropdownMenu>

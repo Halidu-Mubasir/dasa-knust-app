@@ -7,6 +7,7 @@ import { AuthGuard } from '@/components/layout/AuthGuard';
 import api from '@/lib/axios';
 import { User } from '@/types';
 import { Card } from '@/components/ui/card';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { Loader2 } from 'lucide-react';
@@ -90,7 +91,7 @@ function IDCardContent() {
                                 <div className="flex items-start gap-6 mb-6">
                                     <Avatar className="h-24 w-24 border-4 border-yellow-400 shadow-lg">
                                         <AvatarImage
-                                            src={profile.profile_picture || undefined}
+                                            src={getProxiedImageUrl(profile.profile_picture_url || profile.profile_picture) || undefined}
                                             alt={`${userData.first_name} ${userData.last_name}`}
                                         />
                                         <AvatarFallback className="bg-white/20 text-white text-2xl">

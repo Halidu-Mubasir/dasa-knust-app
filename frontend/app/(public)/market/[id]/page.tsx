@@ -14,6 +14,7 @@ import { MessageCircle, ShoppingBag, User, Loader2, ZoomIn, Phone } from 'lucide
 import { Trash2, RotateCcw } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuthStore } from '@/store/useAuthStore';
+import { getProxiedImageUrl } from '@/lib/imageProxy';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -133,13 +134,13 @@ export default function MarketProductPage() {
                                         <>
                                             {/* Layer 1: Background Ambience */}
                                             <img
-                                                src={product.image_url}
+                                                src={getProxiedImageUrl(product.image_url) || ''}
                                                 alt={product.title}
                                                 className="absolute inset-0 w-full h-full object-cover blur-xl scale-110 opacity-60 brightness-75"
                                             />
                                             {/* Layer 2: Sharp Subject */}
                                             <img
-                                                src={product.image_url}
+                                                src={getProxiedImageUrl(product.image_url) || ''}
                                                 alt={product.title}
                                                 className="absolute inset-0 w-full h-full object-scale-down z-10 drop-shadow-md transition-transform duration-500 group-hover:scale-105"
                                             />
@@ -160,7 +161,7 @@ export default function MarketProductPage() {
                                 <div className="relative w-full aspect-square md:aspect-video bg-black/90 rounded-lg overflow-hidden flex items-center justify-center">
                                     {product.image_url && (
                                         <img
-                                            src={product.image_url}
+                                            src={getProxiedImageUrl(product.image_url) || ''}
                                             alt={product.title}
                                             className="w-full h-full object-contain"
                                         />

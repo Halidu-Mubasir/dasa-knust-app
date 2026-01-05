@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-v0l#v#-v+_@&vncc#@(=7+o$7r)857#@klzr^nk@@ws66nnq+u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok-free.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok-free.dev']
 
 
 # Application definition
@@ -97,7 +98,7 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.dev']
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -147,6 +148,11 @@ AUTH_USER_MODEL = "dasa_users.User"
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://dasa-knust-app.vercel.app",
+]
+
+# Allow custom ngrok header for bypassing browser warning
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'ngrok-skip-browser-warning',
 ]
 
 # Media files (User uploads: profile pictures, candidate photos)

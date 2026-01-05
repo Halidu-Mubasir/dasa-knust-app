@@ -10,6 +10,8 @@ ALLOWED_STUDENT_DOMAIN = '@st.knust.edu.gh'
 
 class ProfileSerializer(serializers.ModelSerializer):
     """Serializer for the Profile model"""
+    profile_picture_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Profile
         fields = [
@@ -22,7 +24,8 @@ class ProfileSerializer(serializers.ModelSerializer):
             'hall_of_residence',
             'year_group',
             'hometown',
-            'profile_picture'
+            'profile_picture',
+            'profile_picture_url'
         ]
         read_only_fields = ['id']
         extra_kwargs = {
@@ -36,6 +39,15 @@ class ProfileSerializer(serializers.ModelSerializer):
             'hometown': {'required': False},
             'profile_picture': {'required': False},
         }
+
+    def get_profile_picture_url(self, obj):
+        """Returns absolute URL for profile picture if available"""
+        if obj.profile_picture:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(obj.profile_picture.url)
+            return obj.profile_picture.url
+        return None
 
 
 class UserSerializer(serializers.ModelSerializer):

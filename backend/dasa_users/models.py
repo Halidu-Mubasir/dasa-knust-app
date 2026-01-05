@@ -33,20 +33,20 @@ class Profile(models.Model):
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    student_id = models.CharField(max_length=10, unique=True, help_text="KNUST Student ID")
+    student_id = models.CharField(max_length=10, unique=True, blank=True, null=True, help_text="KNUST Student ID")
     
     # Personal Info
     other_names = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')])
-    
+    gender = models.CharField(max_length=10, choices=[('M', 'Male'), ('F', 'Female')], blank=True, null=True)
+
     # Academic Info
-    college = models.CharField(max_length=10, choices=COLLEGES)
-    program_of_study = models.CharField(max_length=100) # e.g., BSc. Computer Science
-    hall_of_residence = models.CharField(max_length=20, choices=HALLS)
-    year_group = models.IntegerField(null=True,)
-    
+    college = models.CharField(max_length=10, choices=COLLEGES, blank=True, null=True)
+    program_of_study = models.CharField(max_length=100, blank=True, null=True) # e.g., BSc. Computer Science
+    hall_of_residence = models.CharField(max_length=20, choices=HALLS, blank=True, null=True)
+    year_group = models.IntegerField(null=True, blank=True)
+
     # DASA Specific
-    hometown = models.CharField(max_length=100)
+    hometown = models.CharField(max_length=100, blank=True, null=True)
     profile_picture = models.ImageField(upload_to='profiles/', blank=True, null=True)
     
     def __str__(self):
